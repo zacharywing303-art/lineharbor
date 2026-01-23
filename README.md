@@ -1,144 +1,171 @@
-🏁 DSLR Race Timer PRO
-🎥 Computer‑Vision Photo Finish System for School Athletics
-A Python + OpenCV based live race timing system that uses a DSLR / webcam to automatically detect when athletes cross the finish line and records accurate timestamps per lane.
+# 🏃 DSLR Race Timer (Finish Line Auto Detection)
 
-Built for:
+A Python + OpenCV based **school athletics race timer** that uses a DSLR (or webcam) to automatically detect when athletes cross the finish line and logs:
 
-🏫 School sports day
+✅ Lane number  
+✅ Finish time  
+✅ Order (1st, 2nd, 3rd…)  
+✅ Live video overlay  
+✅ Works in real‑time  
+✅ Windows compatible  
+✅ Can export as .exe app  
 
-🏃 Track races (100m, 200m, etc.)
+---
 
-📸 Low‑cost photo finish replacement
+# 📸 Features
 
-💻 Windows laptops
+- Live DSLR / Webcam feed
+- Draw finish line manually
+- Supports multiple lanes (4–8+)
+- Automatic motion detection per lane
+- Timestamp for each athlete
+- Ranking (who finished first)
+- On‑screen timer
+- Fullscreen UI
+- Results panel
+- Watermark support (`@akulsaju`)
+- Works offline
+- Can build into standalone `.exe`
 
-✨ Features
-✅ Live DSLR / webcam feed
-✅ Fullscreen professional UI
-✅ Draw lane lines with mouse
-✅ Draw finish line segments
-✅ Automatic finish detection
-✅ Per‑lane timestamps
-✅ Big digital race timer
-✅ Motion / AI based tracking
-✅ Slow‑motion replay
-✅ Results panel
-✅ Watermark credit (@akulsaju)
-✅ Exportable (can build .exe app)
+---
 
-📸 How it Works
-Camera points at finish line (side view)
+# 🖥️ Demo Output (example)
 
-Draw lanes and finish line
+Lane 4 → 12.84s → 1st
+Lane 2 → 12.91s → 2nd
+Lane 5 → 13.02s → 3rd
+Lane 1 → 13.44s → 4th
 
-Start race
+yaml
+Copy code
 
-When athlete crosses → motion detected
+---
 
-Time recorded automatically
+# ⚙️ Requirements
 
-Lane 1 → 11.23s
-Lane 3 → 11.41s
-Lane 2 → 11.44s
-🖥 Requirements
-Hardware
-DSLR or Webcam
+Install Python 3.10+
 
-Tripod (stable camera)
+Then:
 
-HDMI capture card (recommended for best quality)
-
-Software
-Windows 10/11
-
-Python 3.11+ (recommended)
-
-OpenCV
-
-NumPy
-
-⚙ Installation
-1. Install Python
-Download:
-👉 https://python.org
-
-2. Install dependencies
-Open CMD or PowerShell:
-
+```bash
 py -m pip install opencv-python numpy
-3. Run program
+📷 Camera Setup
+Option A — DSLR
+Use:
+
+HDMI capture card
+
+OR Canon EOS Webcam Utility
+
+OR Nikon Webcam Utility
+
+Option B — Webcam
+Just plug and play.
+
+▶️ Run
+Open terminal in project folder:
+
+bash
+Copy code
 python race_timer.py
-🚀 Build as Windows App (.exe)
-No terminal needed. Double‑click app.
+or
 
-Install PyInstaller
-py -m pip install pyinstaller
-Build
-py -m PyInstaller --onefile --noconsole race_timer.py
-Output
-dist/race_timer.exe
-Run like normal software.
-
-🎮 Controls
+bash
+Copy code
+py race_timer.py
+🖱️ Controls
 Key	Action
-L	Draw lanes
-F	Draw finish lines
-S	Start race
-R	Slow motion replay
+F	Fullscreen
+R	Reset race
 Q	Quit
-Mouse:
+Mouse	Draw finish line
+Lanes	Set number of lanes in code
 
-Click + drag → draw line
+🎯 How it works
+Camera placed sideways at finish line
 
-📷 Camera Setup Tips (IMPORTANT)
-For best accuracy:
+Draw a vertical detection line
 
-✅ 1080p or higher
-✅ 60 FPS or higher
-✅ Side view of finish line
-✅ Fixed tripod
-✅ HDMI capture (avoid webcam compression)
+Each lane has its own region
 
-Example:
+Motion crossing line triggers timestamp
 
-Camera  →  Finish line (side angle)
-NOT front view.
+Software logs and ranks finishes
 
-🧠 Detection Method
-Uses:
+🧠 Detection Logic
+Background subtraction
 
-Frame differencing
+Motion threshold
 
-Motion detection
+Per‑lane ROI
 
-Masked finish line crossing
+First crossing = finish time
 
-Per‑lane timestamp logging
+Sorted timestamps = ranking
 
-No ML required → fast + runs on any laptop.
+📦 Build as EXE (App)
+Install:
 
-📂 Project Structure
-race_timer.py
-README.md
-dist/ (after build)
-🔮 Future Improvements (ideas)
-GUI buttons (Start/Stop)
+bash
+Copy code
+py -m pip install pyinstaller
+Build:
+
+bash
+Copy code
+py -m PyInstaller --onefile --noconsole race_timer.py
+Output:
+
+bash
+Copy code
+dist/race_timer.exe
+Double click to run like normal app.
+
+🗂️ Project Structure
+Copy code
+race-timer/
+│
+├─ race_timer.py
+├─ README.md
+(Simple single‑file project)
+
+🎨 Tips for Accurate Timing
+✅ Use 60+ FPS camera
+✅ Place camera exactly perpendicular to finish line
+✅ Use bright daylight
+✅ Tight crop only finish area
+✅ Avoid camera shake
+
+📈 Accuracy
+Typical:
+
+30 FPS → ±0.03s
+
+60 FPS → ±0.016s
+
+120 FPS → ±0.008s
+
+Good enough for school meets.
+
+🚀 Future Ideas
+Auto lane detection
 
 CSV export
 
-Auto lane detection
+Photo finish zoom
 
-Photo finish zoom window
+Slow‑motion replay
 
-Athlete tracking with AI
+Web dashboard
 
-Scoreboard overlay
+Multiple cameras
 
-Touchscreen support
+Cloud leaderboard
 
-Multi‑camera support
-
-👨‍💻 Author
-Built by
+👤 Author
 @akulsaju
 
+Built for school athletics timing system.
+
+📜 License
+MIT — free to use and modify
